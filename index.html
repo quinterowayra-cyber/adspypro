@@ -1,1 +1,293 @@
-test
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ad Spy Pro 🕵️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#090909;font-family:'Segoe UI',system-ui,sans-serif;color:#fff;display:flex;justify-content:center;padding:30px 16px 60px}
+.wrap{width:100%;max-width:520px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:#FFC800;border-radius:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hdr{padding:16px 0 12px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.hico{background:linear-gradient(135deg,#FFC800,#FF6B00);border-radius:12px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ht{font-size:22px;font-weight:800;letter-spacing:-0.5px}
+.ht span{color:#FFC800}
+.hs{font-size:12px;color:rgba(255,255,255,0.35);margin-top:2px}
+.plats{display:flex;gap:8px;margin-bottom:12px}
+.pb{flex:1;padding:9px;border-radius:11px;border:2px solid rgba(255,255,255,0.08);background:transparent;color:rgba(255,255,255,0.35);font-weight:700;font-size:13px;cursor:pointer;transition:all .2s}
+.pb.am{border-color:#1877F2;background:rgba(24,119,242,.13);color:#fff}
+.pb.at{border-color:#FF0050;background:rgba(255,0,80,.13);color:#fff}
+.tabs{display:flex;gap:3px;margin-bottom:16px;background:rgba(255,255,255,.04);border-radius:12px;padding:4px}
+.tb{flex:1;padding:9px 4px;border-radius:9px;border:none;background:transparent;color:rgba(255,255,255,0.3);font-weight:700;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
+.tb.ac{background:rgba(255,200,0,.12);color:#FFC800;border-bottom:2px solid #FFC800}
+.bc{background:#FFC800;color:#000;border-radius:50%;width:15px;height:15px;font-size:9px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-left:3px;vertical-align:middle}
+input[type=text]{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,200,0,.25);border-radius:11px;padding:12px 15px;color:#fff;font-size:14px;outline:none;margin-bottom:11px;transition:border .2s}
+input[type=text]:focus{border-color:#FFC800}
+input::placeholder{color:rgba(255,255,255,.22)}
+.niches{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.nb{padding:5px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:transparent;color:rgba(255,255,255,.4);font-size:12px;cursor:pointer;transition:all .13s}
+.nb.ac{border-color:#FFC800;background:rgba(255,200,0,.13);color:#FFC800}
+.lbl{color:rgba(255,255,255,.32);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+.bp{width:100%;background:linear-gradient(135deg,#FFC800,#FF6B00);border:none;border-radius:11px;padding:13px;color:#000;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:all .2s}
+.bp:disabled{background:rgba(255,200,0,.2);color:rgba(255,255,255,.3);cursor:not-allowed}
+.sp{width:18px;height:18px;border:2px solid rgba(255,200,0,.2);border-top:2px solid #FFC800;border-radius:50%;animation:spin .7s linear infinite}
+.err{color:#FF6B6B;font-size:12px;margin-bottom:9px}
+.sumbox{background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.18);border-radius:10px;padding:10px 14px;margin-bottom:13px;display:flex;align-items:center;gap:9px;font-size:13px;color:#00FF88}
+.pc{background:rgba(255,255,255,.04);border:1px solid rgba(255,200,0,.13);border-radius:14px;margin-bottom:12px;overflow:hidden;animation:fu .3s ease both}
+.ph{padding:14px 16px;cursor:pointer;display:flex;gap:12px;align-items:flex-start}
+.pe{background:linear-gradient(135deg,#FFC800,#FF6B00);border-radius:9px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.pti{font-size:14px;font-weight:800;margin-bottom:3px}
+.pho{font-size:12px;color:rgba(255,255,255,.42)}
+.stag{font-weight:700;font-size:12px;border-radius:20px;padding:2px 10px;flex-shrink:0}
+.sg{background:rgba(0,255,136,.13);color:#00FF88}
+.sm{background:rgba(255,200,0,.13);color:#FFC800}
+.sbw{display:flex;align-items:center;gap:8px;margin-top:4px}
+.sbb{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px}
+.sbf{height:100%;border-radius:3px;transition:width .8s ease}
+.ctabs{display:flex;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.ct{flex:1;padding:8px 2px;border:none;background:transparent;color:rgba(255,255,255,.3);font-weight:700;font-size:11px;cursor:pointer;border-bottom:2px solid transparent;transition:all .13s}
+.ct.ac{color:#FFC800;border-bottom:2px solid #FFC800;background:rgba(255,200,0,.06)}
+.cb{padding:14px 16px}
+.sg2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.sl{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.sv{font-size:13px;font-weight:700;color:rgba(255,255,255,.85)}
+.svg{color:#00FF88}
+.fc{grid-column:1/-1}
+.hb{background:rgba(255,200,0,.06);border-left:3px solid #FFC800;border-radius:0 9px 9px 0;padding:10px 12px}
+.ht2{color:#FFC800;font-size:12px;font-style:italic;line-height:1.5}
+.sc2{display:flex;gap:10px;margin-bottom:12px}
+.stm{width:54px;flex-shrink:0;background:rgba(255,200,0,.09);border-radius:8px;padding:4px 5px;text-align:center}
+.sts{color:#FFC800;font-size:9px;font-weight:700}
+.sty{color:rgba(255,255,255,.42);font-size:9px}
+.sb2{flex:1}
+.ss{margin-bottom:5px}
+.tipb{background:rgba(0,255,136,.07);border:1px solid rgba(0,255,136,.18);border-radius:9px;padding:9px 12px;margin-top:7px}
+.tipt{color:#00FF88;font-size:12px;line-height:1.5}
+.supc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:12px 14px;margin-bottom:10px}
+.suph{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.supn{font-weight:700;font-size:13px}
+.shp{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);border-radius:7px;padding:2px 8px;font-size:11px}
+.supg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:9px}
+.negb{background:rgba(255,200,0,.07);border-radius:8px;padding:9px 11px}
+.negt{color:#FFC800;font-size:12px;line-height:1.5}
+.trgr{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+.trc{background:rgba(255,255,255,.04);border-radius:11px;padding:10px 12px;cursor:pointer;transition:all .15s}
+.trc:hover{background:rgba(255,255,255,.09);transform:translateY(-1px)}
+.trt{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.hd{width:6px;height:6px;border-radius:50%;animation:pulse 1.4s ease infinite}
+.trkw{font-size:13px;font-weight:800;margin-bottom:3px}
+.trr{color:rgba(255,255,255,.35);font-size:11px}
+.pgc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 14px;display:flex;gap:12px;align-items:center;margin-bottom:9px;animation:fu .3s ease both}
+.pgi{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.pgn{font-size:13px;font-weight:800;margin-bottom:2px}
+.pgm{color:rgba(255,255,255,.32);font-size:11px;margin-bottom:3px}
+.pgi2{color:rgba(255,200,0,.75);font-size:11px;font-style:italic}
+.hca{border-radius:13px;padding:14px 15px;margin-bottom:10px;animation:fu .3s ease both}
+.hca.hb2{background:rgba(255,200,0,.06);border:1px solid rgba(255,200,0,.22)}
+.hca.hn{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+.hbb{background:#FFC80022;color:#FFC800;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:700;display:inline-block;margin-bottom:5px}
+.htop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.hq{font-weight:800;font-size:15px}
+.hme{color:rgba(255,255,255,.3);font-size:11px;margin-top:2px}
+.hav{text-align:right}
+.hsc{font-weight:800;font-size:22px}
+.hsl{color:rgba(255,255,255,.3);font-size:10px}
+.hbo{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.hbp{color:rgba(255,255,255,.32);font-size:11px}
+.hbp span{color:#FFC800}
+.brr{background:rgba(255,200,0,.1);border:1px solid rgba(255,200,0,.22);border-radius:8px;padding:5px 11px;color:#FFC800;font-weight:700;font-size:11px;cursor:pointer}
+.lc{display:flex;justify-content:center;align-items:center;gap:10px;padding:28px 0;color:rgba(255,255,255,.33);font-size:13px}
+.es{text-align:center;padding:40px 20px;color:rgba(255,255,255,.28);font-size:14px}
+.ei{font-size:36px;margin-bottom:10px}
+.btl{background:linear-gradient(135deg,#FFC800,#FF6B00);border:none;border-radius:11px;padding:12px 26px;color:#000;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s}
+.btl:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,200,0,.3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <div class="hico">🕵️</div>
+  <div>
+    <div class="ht">Ad Spy <span>Pro</span></div>
+    <div class="hs">Productos · Tendencias · Scripts · Proveedores</div>
+  </div>
+</div>
+<div class="plats">
+  <button class="pb am" id="bm" onclick="setPl('meta')">📘 Meta Ads</button>
+  <button class="pb" id="bt" onclick="setPl('tiktok')">🎵 TikTok Ads</button>
+</div>
+<div class="tabs">
+  <button class="tb ac" id="ts" onclick="setTab('s')">🔍 Buscar</button>
+  <button class="tb" id="tt" onclick="setTab('t')">🔥 Tendencias</button>
+  <button class="tb" id="th" onclick="setTab('h')">📊 Historial<span class="bc" id="hcnt" style="display:none">0</span></button>
+</div>
+<div id="app"></div>
+</div>
+<script>
+const NICHES=["Mascotas","Fitness","Cocina","Belleza","Tecnología","Hogar","Bebés","Moda"];
+const API="/api/claude";
+let S={pl:"meta",tab:"s",kw:"",ni:"",loading:false,res:null,err:"",hist:[],trends:null,pages:null,tloaded:false,tloading:false,cards:{}};
+
+async function ai(sys,msg,tok=1000){
+  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-3-5-sonnet-20241022",max_tokens:tok,system:sys,messages:[{role:"user",content:msg}]})});
+  const d=await r.json();
+  const txt=(d.content||[]).map(i=>i.text||"").join("").replace(/```json|```/g,"").trim();
+  return JSON.parse(txt);
+}
+function pn(){return S.pl==="meta"?"Meta/Facebook Ads":"TikTok Ads"}
+function sc(s){return s>=85?"#00FF88":s>=70?"#FFC800":"#FF6B6B"}
+
+function setPl(p){
+  S.pl=p;S.tloaded=false;S.trends=null;S.pages=null;
+  document.querySelectorAll(".pb").forEach(b=>b.classList.remove("am","at"));
+  document.getElementById(p==="meta"?"bm":"bt").classList.add(p==="meta"?"am":"at");
+  render();
+}
+function setTab(t){
+  S.tab=t;
+  document.querySelectorAll(".tb").forEach(b=>b.classList.remove("ac"));
+  document.getElementById("t"+t).classList.add("ac");
+  render();
+}
+async function search(q){
+  if(!q||S.loading)return;
+  S.loading=true;S.res=null;S.cards={};S.err="";render();
+  try{
+    const d=await ai(
+      `Experto dropshipping ecommerce ${pn()}. SOLO JSON sin markdown ni texto extra.\nEstructura exacta:\n{"summary":"frase corta","products":[{"name":"...","emoji":"...","hook":"...","score":80,"price":"$XX","cost":"$X","margin":"XX%","audience":"...","angle":"...","adCopy":"..."}]}\nDevuelve exactamente 4 productos.`,
+      `Productos ganadores dropshipping ${pn()} keyword:"${q}". Negocio Colombia/LATAM.`,1200
+    );
+    S.res=d;
+    const avg=Math.round(d.products.reduce((s,p)=>s+p.score,0)/d.products.length);
+    S.hist=[{q,pl:pn(),products:d.products,avg,time:new Date().toLocaleTimeString("es-CO",{hour:"2-digit",minute:"2-digit"})},...S.hist.filter(e=>e.q!==q)].slice(0,10);
+    const hc=document.getElementById("hcnt");hc.textContent=S.hist.length;hc.style.display="inline-flex";
+  }catch(e){S.err="Error al analizar. Intenta de nuevo."}
+  S.loading=false;render();
+}
+async function getScript(i){
+  const p=S.res.products[i];p._sl=true;rCB(i);
+  try{p._sc=await ai(`Experto video ads ${pn()}. SOLO JSON sin markdown.`,`Script video 30s para:"${p.name}". Audiencia:${p.audience}. Angulo:${p.angle}.\nJSON:{"scenes":[{"time":"0-5s","type":"Hook","visual":"...","audio":"..."},{"time":"5-12s","type":"Problema","visual":"...","audio":"..."},{"time":"12-22s","type":"Solucion","visual":"...","audio":"..."},{"time":"22-27s","type":"Prueba social","visual":"...","audio":"..."},{"time":"27-30s","type":"CTA","visual":"...","audio":"..."}],"tip":"..."}`,900)}catch{p._se=true}
+  p._sl=false;rCB(i);
+}
+async function getSupp(i){
+  const p=S.res.products[i];p._ul=true;rCB(i);
+  try{p._su=await ai(`Experto sourcing dropshipping LATAM. SOLO JSON sin markdown.`,`3 proveedores para:"${p.name}". Costo:${p.cost}. Volumen:1000+/dia.\nJSON:{"suppliers":[{"type":"...","emoji":"...","pros":"...","cons":"...","shipping":"...","minOrder":"...","negotiation":"...","searchTerm":"..."}]}`,900)}catch{p._ue=true}
+  p._ul=false;rCB(i);
+}
+async function loadTrends(){
+  S.tloading=true;S.tloaded=true;render();
+  try{
+    const[t,pg]=await Promise.all([
+      ai(`Tendencias ecommerce ${pn()} LATAM. SOLO JSON sin markdown.`,`8 keywords trending ${pn()} dropshipping LATAM 2025.\nJSON:{"trends":[{"keyword":"...","emoji":"...","heat":85,"reason":"max 7 palabras","volume":"Alto"}]}`,800),
+      ai(`Anunciantes ecommerce ${pn()}. SOLO JSON sin markdown.`,`6 paginas mejores ads ${pn()} LATAM 2025.\nJSON:{"pages":[{"name":"...","emoji":"...","color1":"#FFC800","color2":"#FF6B00","niche":"...","adCount":50,"spend":"$10k/mes","insight":"max 9 palabras","topProduct":"..."}]}`,800)
+    ]);
+    S.trends=t.trends;S.pages=pg.pages;
+  }catch{S.trends=[];S.pages=[]}
+  S.tloading=false;render();
+}
+function buildCB(i){
+  const p=S.res.products[i],ct=S.cards[i]||"o";
+  if(ct==="o")return`<div class="sg2">
+    <div><div class="sl">💰 Precio venta</div><div class="sv">${p.price}</div></div>
+    <div><div class="sl">📦 Costo</div><div class="sv">${p.cost}</div></div>
+    <div><div class="sl">📈 Margen</div><div class="sv svg">${p.margin}</div></div>
+    <div><div class="sl">🎯 Audiencia</div><div class="sv" style="font-size:12px">${p.audience}</div></div>
+    <div class="fc"><div class="sl">🧠 Ángulo de marketing</div><div style="color:rgba(255,255,255,.8);font-size:12px;line-height:1.5">${p.angle}</div></div>
+    <div class="fc hb"><div class="sl">✍️ Copy de apertura</div><div class="ht2">"${p.adCopy}"</div></div>
+  </div>`;
+  if(ct==="sc"){
+    if(p._sl)return`<div class="lc"><div class="sp"></div>Generando script de video...</div>`;
+    if(p._se)return`<div class="err">Error generando script. Intenta de nuevo.</div>`;
+    if(!p._sc){getScript(i);return`<div class="lc"><div class="sp"></div>Generando script de video...</div>`}
+    return(p._sc.scenes||[]).map(s=>`<div class="sc2"><div class="stm"><div class="sts">${s.time}</div><div class="sty">${s.type}</div></div><div class="sb2"><div class="ss"><div class="sl">🎥 Visual</div><div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.4">${s.visual}</div></div><div class="ss"><div class="sl">🎙️ Audio</div><div style="font-size:12px;color:#FFC800;font-style:italic;line-height:1.4">${s.audio}</div></div></div></div>`).join("")+(p._sc.tip?`<div class="tipb"><div class="sl">💡 Tip de producción</div><div class="tipt">${p._sc.tip}</div></div>`:"");
+  }
+  if(ct==="su"){
+    if(p._ul)return`<div class="lc"><div class="sp"></div>Buscando mejores proveedores...</div>`;
+    if(p._ue)return`<div class="err">Error. Intenta de nuevo.</div>`;
+    if(!p._su){getSupp(i);return`<div class="lc"><div class="sp"></div>Buscando mejores proveedores...</div>`}
+    return(p._su.suppliers||[]).map(s=>`<div class="supc"><div class="suph"><div class="supn">${s.emoji} ${s.type}</div><div class="shp">🚚 ${s.shipping}</div></div><div class="supg"><div><div class="sl">✅ Pros</div><div style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.4">${s.pros}</div></div><div><div class="sl">⚠️ Cons</div><div style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.4">${s.cons}</div></div><div><div class="sl">📦 Pedido mínimo</div><div style="font-size:12px;color:rgba(255,255,255,.75)">${s.minOrder}</div></div><div><div class="sl">🔍 Buscar como</div><div style="font-size:12px;color:#FFC800;font-style:italic">"${s.searchTerm}"</div></div></div><div class="negb"><div class="sl">🤝 Cómo negociar con tu volumen</div><div class="negt">${s.negotiation}</div></div></div>`).join("");
+  }
+  return"";
+}
+function rCB(i){const el=document.getElementById("cb"+i);if(el)el.innerHTML=buildCB(i)}
+function rCard(p,i){
+  const c=sc(p.score),open=S.cards[i]!==undefined,ct=S.cards[i]||"o";
+  return`<div class="pc" style="animation-delay:${i*.08}s">
+    <div class="ph" onclick="tog(${i})">
+      <div class="pe">${p.emoji}</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+          <div class="pti">${p.name}</div>
+          <span class="stag ${p.score>=85?"sg":"sm"}">${p.score}/100</span>
+        </div>
+        <div class="sbw"><div class="sbb"><div class="sbf" style="width:${p.score}%;background:${c}"></div></div></div>
+        <div class="pho" style="margin-top:4px">${p.hook}</div>
+      </div>
+    </div>
+    ${open?`<div class="ctabs">
+      <button class="ct${ct==="o"?" ac":""}" onclick="sct(${i},'o')">📋 Overview</button>
+      <button class="ct${ct==="sc"?" ac":""}" onclick="sct(${i},'sc')">🎬 Script 30s</button>
+      <button class="ct${ct==="su"?" ac":""}" onclick="sct(${i},'su')">📦 Proveedores</button>
+    </div><div class="cb" id="cb${i}">${buildCB(i)}</div>`:""}
+  </div>`;
+}
+function rSearch(){
+  let h=`<input type="text" id="kwi" placeholder="Escribe un producto o nicho... ej: mascarilla facial" value="${S.kw}"/>
+  <div class="lbl">O elige un nicho rápido</div>
+  <div class="niches">${NICHES.map(n=>`<button class="nb${S.ni===n?" ac":""}" onclick="selN('${n}')">${n}</button>`).join("")}</div>
+  ${S.err?`<div class="err">⚠️ ${S.err}</div>`:""}
+  <button class="bp" ${S.loading?"disabled":""} onclick="doS()">
+    ${S.loading?`<div class="sp"></div> Analizando tendencias...`:"🔍 Buscar Productos Ganadores"}
+  </button>`;
+  if(S.res)h+=`<div style="margin-top:16px">
+    <div class="sumbox">✅ ${S.res.summary}</div>
+    <div class="lbl">${S.res.products.length} productos encontrados — toca cada uno para ver script y proveedores</div>
+    ${S.res.products.map((p,i)=>rCard(p,i)).join("")}
+    <div style="color:rgba(255,255,255,.13);font-size:11px;text-align:center;margin-top:12px">Análisis generado con IA · basado en patrones de mercado</div>
+  </div>`;
+  return h;
+}
+function rTrends(){
+  if(!S.tloaded)return`<div class="es"><div class="ei">🔥</div><p style="margin-bottom:18px;line-height:1.6">Descubre qué está dominando ${S.pl==="meta"?"Meta":"TikTok"} Ads<br>en este momento en LATAM</p><button class="btl" onclick="loadTrends()">Cargar Tendencias en Vivo</button></div>`;
+  if(S.tloading)return`<div class="lc"><div class="sp"></div> Analizando tendencias de ${pn()}...</div>`;
+  return`<div class="lbl">🌡️ Keywords & nichos calientes — clic para buscar automáticamente</div>
+  <div class="trgr">${(S.trends||[]).map(t=>{const hc=t.heat>=90?"#FF4444":t.heat>=78?"#FF6B00":"#FFC800";return`<div class="trc" style="border:1px solid ${hc}44" onclick="selT('${t.keyword}')"><div class="trt"><span style="font-size:18px">${t.emoji}</span><div style="display:flex;align-items:center;gap:4px"><div class="hd" style="background:${hc}"></div><span style="color:${hc};font-size:11px;font-weight:800">${t.heat}°</span></div></div><div class="trkw" style="color:${hc}">${t.keyword}</div><div class="trr">${t.reason}</div></div>`}).join("")}</div>
+  <div class="lbl">🏆 Páginas con más ads activos ahora</div>
+  ${(S.pages||[]).map((p,i)=>`<div class="pgc" style="animation-delay:${i*.07}s"><div class="pgi" style="background:linear-gradient(135deg,${p.color1},${p.color2})">${p.emoji}</div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px"><div class="pgn">${p.name}</div><span style="background:rgba(0,255,136,.1);color:#00FF88;border-radius:7px;padding:2px 8px;font-size:11px;font-weight:700">+${p.adCount} ads</span></div><div class="pgm">${p.niche} · ${p.spend}</div><div class="pgi2">${p.insight}</div><div style="color:rgba(255,255,255,.28);font-size:11px;margin-top:2px">⭐ ${p.topProduct}</div></div></div>`).join("")}`;
+}
+function rHistory(){
+  if(!S.hist.length)return`<div class="es"><div class="ei">📭</div><p style="line-height:1.7">Aún no tienes búsquedas.<br>Ve a 🔍 Buscar para comenzar.</p></div>`;
+  const sorted=[...S.hist].sort((a,b)=>b.avg-a.avg);
+  return`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div><div style="font-size:16px;font-weight:800;margin-bottom:3px">Comparativa de Nichos</div><div style="color:rgba(255,255,255,.3);font-size:12px">Ordenado por mejor score promedio</div></div><span style="background:rgba(255,200,0,.13);color:#FFC800;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700">${S.hist.length} búsquedas</span></div>
+  ${sorted.map((e,i)=>{const best=e.products.reduce((a,b)=>a.score>b.score?a:b),c=sc(e.avg);return`<div class="hca ${i===0?"hb2":"hn"}" style="animation-delay:${i*.07}s">${i===0?`<div class="hbb">🏆 MEJOR NICHO</div>`:""}
+    <div class="htop"><div><div class="hq">${e.q}</div><div class="hme">${e.pl} · ${e.time}</div></div><div class="hav"><div class="hsc" style="color:${c}">${e.avg}</div><div class="hsl">score prom.</div></div></div>
+    <div class="sbw" style="margin-bottom:0"><div class="sbb"><div class="sbf" style="width:${e.avg}%;background:${c}"></div></div></div>
+    <div class="hbo"><div class="hbp">Mejor: <span>${best.emoji} ${best.name}</span> · margen ${best.margin}</div><button class="brr" onclick="rerun('${e.q}')">Re-analizar</button></div>
+  </div>`}).join("")}`;
+}
+function render(){
+  const el=document.getElementById("app");
+  if(S.tab==="s")el.innerHTML=rSearch();
+  else if(S.tab==="t")el.innerHTML=rTrends();
+  else el.innerHTML=rHistory();
+  const inp=document.getElementById("kwi");
+  if(inp){
+    inp.addEventListener("input",e=>{S.kw=e.target.value;S.ni="";S.err=""});
+    inp.addEventListener("keydown",e=>{if(e.key==="Enter")doS()});
+    inp.focus();
+  }
+}
+function doS(){const q=S.kw.trim()||S.ni;if(!q){S.err="Escribe una palabra clave o selecciona un nicho";render();return}search(q)}
+function selN(n){S.ni=S.ni===n?"":n;S.kw="";render()}
+function selT(kw){S.kw=kw;S.ni="";S.tab="s";document.querySelectorAll(".tb").forEach(b=>b.classList.remove("ac"));document.getElementById("ts").classList.add("ac");render();setTimeout(()=>search(kw),80)}
+function tog(i){if(S.cards[i]!==undefined)delete S.cards[i];else S.cards[i]="o";render()}
+function sct(i,t){S.cards[i]=t;render()}
+function rerun(q){S.kw=q;S.ni="";S.tab="s";document.querySelectorAll(".tb").forEach(b=>b.classList.remove("ac"));document.getElementById("ts").classList.add("ac");render();setTimeout(()=>search(q),80)}
+render();
+</script>
+</body>
+</html>
