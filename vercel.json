@@ -1,6 +1,7 @@
 {
-  "rewrites": [
-    { "source": "/api/claude", "destination": "/api/claude" },
-    { "source": "/(.*)", "destination": "/public/index.html" }
-  ]
+  "functions": {
+    "api/claude.js": {
+      "runtime": "edge"
+    }
+  }
 }
