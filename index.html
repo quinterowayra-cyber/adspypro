@@ -129,7 +129,7 @@ input::placeholder{color:rgba(255,255,255,.22)}
 </div>
 <script>
 const NICHES=["Mascotas","Fitness","Cocina","Belleza","Tecnología","Hogar","Bebés","Moda"];
-const API="https://api.anthropic.com/v1/messages";
+const API="/api/claude";
 let S={pl:"meta",tab:"s",kw:"",ni:"",loading:false,res:null,err:"",hist:[],trends:null,pages:null,tloaded:false,tloading:false,cards:{}};
 
 async function ai(sys,msg,tok=1000){
