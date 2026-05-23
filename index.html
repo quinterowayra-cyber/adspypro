@@ -133,7 +133,7 @@ const API="/api/claude";
 let S={pl:"meta",tab:"s",kw:"",ni:"",loading:false,res:null,err:"",hist:[],trends:null,pages:null,tloaded:false,tloading:false,cards:{}};
 
 async function ai(sys,msg,tok=1000){
-  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-3-5-sonnet-20241022",max_tokens:tok,system:sys,messages:[{role:"user",content:msg}]})});
+  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-haiku-4-5-20251001",max_tokens:tok,system:sys,messages:[{role:"user",content:msg}]})});
   const d=await r.json();
   const txt=(d.content||[]).map(i=>i.text||"").join("").replace(/```json|```/g,"").trim();
   return JSON.parse(txt);
