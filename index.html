@@ -159,7 +159,7 @@ async function search(q){
   try{
     const d=await ai(
       `Experto dropshipping ecommerce ${pn()}. SOLO JSON sin markdown ni texto extra.\nEstructura exacta:\n{"summary":"frase corta","products":[{"name":"...","emoji":"...","hook":"...","score":80,"price":"$XX","cost":"$X","margin":"XX%","audience":"...","angle":"...","adCopy":"..."}]}\nDevuelve exactamente 4 productos.`,
-      `Productos ganadores dropshipping ${pn()} keyword:"${q}". Negocio Colombia/LATAM.`,1200
+      `Productos ganadores dropshipping ${pn()} keyword:"${q}". Negocio USA and Europe.`,1200
     );
     S.res=d;
     const avg=Math.round(d.products.reduce((s,p)=>s+p.score,0)/d.products.length);
