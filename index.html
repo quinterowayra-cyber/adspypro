@@ -133,7 +133,7 @@ const API="/api/claude";
 let S={pl:"meta",tab:"s",kw:"",ni:"",loading:false,res:null,err:"",hist:[],trends:null,pages:null,tloaded:false,tloading:false,cards:{}};
 
 async function ai(sys,msg,tok=1000){
-  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-haiku-4-5-20251001",max_tokens:tok,system:sys,messages:[{role:"user",content:msg}]})});
+  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-3-5-sonnet-20241022",max_tokens:tok,system:sys,messages:[{role:"user",content:msg}]})});
   const d=await r.json();
   const txt=(d.content||[]).map(i=>i.text||"").join("").replace(/```json|```/g,"").trim();
   return JSON.parse(txt);
@@ -198,6 +198,7 @@ function buildCB(i){
     <div><div class="sl">🎯 Audiencia</div><div class="sv" style="font-size:12px">${p.audience}</div></div>
     <div class="fc"><div class="sl">🧠 Ángulo de marketing</div><div style="color:rgba(255,255,255,.8);font-size:12px;line-height:1.5">${p.angle}</div></div>
     <div class="fc hb"><div class="sl">✍️ Copy de apertura</div><div class="ht2">"${p.adCopy}"</div></div>
+    <div class="fc" style="margin-top:10px;display:flex;gap:8px"><a href="${`https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=${encodeURIComponent(p.name)}`}" target="_blank" style="flex:1;background:rgba(24,119,242,.15);border:1px solid rgba(24,119,242,.4);border-radius:9px;padding:9px;color:#4A9EFF;font-size:12px;font-weight:700;text-align:center;text-decoration:none;display:block">📘 Meta Ads Library</a><a href="${`https://library.tiktok.com/ads?region=US&keyword=${encodeURIComponent(p.name)}`}" target="_blank" style="flex:1;background:rgba(255,0,80,.1);border:1px solid rgba(255,0,80,.35);border-radius:9px;padding:9px;color:#FF4479;font-size:12px;font-weight:700;text-align:center;text-decoration:none;display:block">🎵 TikTok Library</a></div>
   </div>`;
   if(ct==="sc"){
     if(p._sl)return`<div class="lc"><div class="sp"></div>Generando script de video...</div>`;
